@@ -27,14 +27,6 @@ body {
 	box-shadow: 0 16px 48px rgb(31 41 55 / 8%);
 }
 
-.eyebrow {
-	margin: 0 0 8px;
-	color: #176b56;
-	font-size: 12px;
-	font-weight: 700;
-	letter-spacing: .12em;
-}
-
 h1 {
 	margin: 0;
 	font-size: clamp(30px, 7vw, 42px);

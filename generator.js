@@ -21,10 +21,9 @@
 			throw new Error('ZIP ဖန်တီးရန်လိုအပ်သော library ကို မရရှိနိုင်ပါ။ အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပါ။');
 		}
 
-		setStatus('ATS theme ဖိုင်များကို ဖတ်နေပါသည်…');
 		const response = await fetch(sourceArchive);
 		if (!response.ok) {
-			throw new Error('ATS theme source ဖိုင်ကို ဖတ်မရပါ။ ထပ်မံကြိုးစားပါ။');
+			throw new Error('Theme ဖိုင်များကို ဖတ်မရပါ။ ထပ်မံကြိုးစားပါ။');
 		}
 
 		const sourceZip = await JSZip.loadAsync(await response.arrayBuffer());
@@ -54,7 +53,9 @@
 
 				if (path === 'style.css' || path === 'style-rtl.css') {
 					contents = contents.replace(/^Theme Name:\s*.*$/m, 'Theme Name: ' + themeName);
-					contents = contents.replace(/^Author:\s*.*$/m, 'Author: ' + authorName);
+					if (authorName) {
+						contents = contents.replace(/^Author:\s*.*$/m, 'Author: ' + authorName);
+					}
 				}
 
 				outputZip.file(themeSlug + '/' + outputPath, contents);
@@ -82,6 +83,24 @@
 		}, 1000);
 	}
 
+	function createSlug(themeName) {
+		let slug = themeName.normalize('NFKD')
+			.replace(/[\u0300-\u036f]/g, '')
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/^-+|-+$/g, '')
+			.slice(0, 60)
+			.replace(/-+$/g, '');
+
+		if (!slug) {
+			slug = 'my-theme';
+		} else if (!/^[a-z]/.test(slug)) {
+			slug = ('theme-' + slug).slice(0, 60).replace(/-+$/g, '');
+		}
+
+		return slug;
+	}
+
 	form.addEventListener('submit', async function (event) {
 		event.preventDefault();
 		if (!form.reportValidity()) {
@@ -89,9 +108,15 @@
 		}
 
 		const themeName = form.elements.theme_name.value.trim();
-		const themeSlug = form.elements.theme_slug.value.trim();
+		const enteredSlug = form.elements.theme_slug.value.trim();
 		const authorName = form.elements.author_name.value.trim().replace(/[\r\n]/g, ' ');
 
+		if (!themeName) {
+			setStatus('Theme အမည်ကို ဖြည့်ပါ။', 'error');
+			return;
+		}
+
+		const themeSlug = enteredSlug || createSlug(themeName);
 		if (!/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(themeSlug)) {
 			setStatus('Theme Slug ကို အင်္ဂလိပ်စာလုံးအသေးဖြင့် စပြီး ဂဏန်းနှင့် hyphen များဖြင့် မှန်ကန်စွာ ဖြည့်ပါ။', 'error');
 			return;
@@ -99,8 +124,8 @@
 
 		const safeThemeName = themeName.replace(/[\r\n\x00-\x1F\x7F]/g, ' ').trim();
 		const safeAuthorName = authorName.replace(/[\r\n\x00-\x1F\x7F]/g, ' ').trim();
-		if (!safeThemeName || !safeAuthorName) {
-			setStatus('Theme အမည်နှင့် ရေးသားသူအမည်ကို ဖြည့်ပါ။', 'error');
+		if (!safeThemeName) {
+			setStatus('Theme အမည်ကို ဖြည့်ပါ။', 'error');
 			return;
 		}
 

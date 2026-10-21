@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="ATS WordPress theme မှ စိတ်ကြိုက် theme ZIP ဖန်တီးပါ။">
+	<meta name="description" content="စိတ်ကြိုက် WordPress theme ZIP ဖန်တီးပါ။">
 	<title>WordPress Theme Generator</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="assets/jszip.min.js" defer></script>
@@ -12,7 +12,6 @@
 <body>
 	<main class="generator">
 		<header>
-			<p class="eyebrow">ATS WORDPRESS THEME</p>
 			<h1>Theme Generator</h1>
 			<p class="intro">အောက်ပါအချက်အလက်များ ဖြည့်ပြီး ကိုယ်ပိုင် WordPress theme ZIP ဖိုင် ဖန်တီးပါ။</p>
 		</header>
@@ -22,11 +21,11 @@
 			<input id="theme-name" name="theme_name" type="text" placeholder="ဥပမာ - My Awesome Theme" required maxlength="100">
 
 			<label for="theme-slug">Theme Slug</label>
-			<input id="theme-slug" name="theme_slug" type="text" placeholder="ဥပမာ - my-awesome-theme" pattern="[a-z][a-z0-9]*(?:-[a-z0-9]+)*" required maxlength="60" aria-describedby="slug-help">
-			<small id="slug-help">အင်္ဂလိပ်စာလုံးအသေးဖြင့် စပြီး၊ ဂဏန်းနှင့် hyphen များကိုလည်း သုံးနိုင်သည်။</small>
+			<input id="theme-slug" name="theme_slug" type="text" placeholder="အလိုအလျောက် သတ်မှတ်မည်" pattern="[a-z][a-z0-9]*(?:-[a-z0-9]+)*" maxlength="60" aria-describedby="slug-help">
+			<small id="slug-help">မဖြည့်ထားပါက Theme အမည်မှ အလိုအလျောက် ဖန်တီးပေးပါမည်။</small>
 
 			<label for="author-name">ရေးသားသူ</label>
-			<input id="author-name" name="author_name" type="text" placeholder="ရေးသားသူအမည်" required maxlength="100">
+			<input id="author-name" name="author_name" type="text" placeholder="ရေးသားသူအမည် (မဖြည့်လည်းရသည်)" maxlength="100">
 
 			<button id="generate-button" type="submit">Theme ZIP ဖန်တီးရန်</button>
 			<p id="status" class="status" role="status" aria-live="polite"></p>

@@ -1,11 +1,12 @@
-# ATS WordPress Theme Generator
+# WordPress Theme Generator
 
-A static theme generator for GitHub Pages. It creates a customized ATS theme ZIP
-in the visitor's browser; it does not require a PHP server.
+A static theme generator for GitHub Pages. It creates a customized theme ZIP in
+the visitor's browser; it does not require a PHP server.
 
-The generator updates the theme name, author, text domain, and ATS/Underscores
-function and CSS prefixes to match the submitted slug. The slug must start with
-a lowercase letter so generated PHP identifiers remain valid.
+The generator updates the theme name, optional author, text domain, and theme
+function and CSS prefixes to match the slug. If no slug is entered, one is
+generated from the theme name. An entered slug must start with a lowercase
+letter so generated PHP identifiers remain valid.
 
 ## GitHub Pages setup
 
