@@ -10,7 +10,7 @@ if (-not (Test-Path -LiteralPath $ThemePath -PathType Container)) {
 
 $ThemePath = (Resolve-Path -LiteralPath $ThemePath).Path.TrimEnd('\')
 $OutputDirectory = Join-Path $PSScriptRoot 'assets'
-$OutputPath = Join-Path $OutputDirectory 'ats-theme-source.zip'
+$OutputPath = Join-Path $OutputDirectory 'theme-source.zip'
 
 if (-not (Test-Path -LiteralPath (Join-Path $ThemePath 'style.css') -PathType Leaf)) {
 	throw "Theme source does not contain style.css: $ThemePath"

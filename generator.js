@@ -4,7 +4,7 @@
 	const form = document.getElementById('theme-form');
 	const button = document.getElementById('generate-button');
 	const status = document.getElementById('status');
-	const sourceArchive = 'assets/ats-theme-source.zip';
+	const sourceArchive = 'assets/theme-source.zip';
 	const textFileExtensions = /\.(?:css|dist|html?|js|json|md|php|pot|scss|svg|text|txt|xml|ya?ml)$/i;
 
 	function setStatus(message, state) {

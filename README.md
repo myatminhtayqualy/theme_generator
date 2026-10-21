@@ -17,7 +17,7 @@ letter so generated PHP identifiers remain valid.
    **Actions** tab.
 5. Open the Pages URL shown in the deployment or Pages settings.
 
-The source theme is published in `assets/ats-theme-source.zip`. Anyone who can
+The source theme is published in `assets/theme-source.zip`. Anyone who can
 visit the public site can download those source files. ZIP generation happens
 in the visitor's browser; theme details are not sent to a PHP server.
 
