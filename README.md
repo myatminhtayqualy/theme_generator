@@ -11,9 +11,10 @@ a lowercase letter so generated PHP identifiers remain valid.
 
 1. Push this repository to GitHub.
 2. Open the repository's **Settings → Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select the `main` branch and `/ (root)`, then save.
-5. Open the Pages URL shown on that settings page.
+3. Under **Build and deployment**, select **GitHub Actions** as the source.
+4. Push to `main` or manually run **Deploy to GitHub Pages** from the
+   **Actions** tab.
+5. Open the Pages URL shown in the deployment or Pages settings.
 
 The source theme is published in `assets/ats-theme-source.zip`. Anyone who can
 visit the public site can download those source files. ZIP generation happens
