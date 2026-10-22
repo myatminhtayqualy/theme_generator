@@ -1,5 +1,5 @@
 param(
-	[string] $ThemePath = 'C:\laragon\www\ats\wp-content\themes\ats'
+	[string] $ThemePath = 'C:\laragon\www\unserscoreme'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -39,16 +39,20 @@ try {
 		)) {
 			$RelativePath = $File.Substring($ThemePath.Length + 1)
 			$Segments = $RelativePath -split '[\\/]'
-			$IsBackup = $false
+			$IsExcluded = $false
 
 			foreach ($Segment in $Segments) {
-				if ($Segment -eq '.git' -or $Segment -match '(?i)^backup(?:\s|$)') {
-					$IsBackup = $true
+				if (
+					$Segment -eq '.git' -or
+					$Segment -eq 'theme-generator.php' -or
+					$Segment -match '(?i)^backup(?:\s|$)'
+				) {
+					$IsExcluded = $true
 					break
 				}
 			}
 
-			if ($IsBackup) {
+			if ($IsExcluded) {
 				continue
 			}
 

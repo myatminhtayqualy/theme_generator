@@ -43,18 +43,17 @@
 			if (isTextFile(path)) {
 				let contents = await file.async('string');
 				contents = contents
-					.replace(/^Text Domain:\s*.*$/gm, 'Text Domain: ' + themeSlug)
-					.replace(/(['"])ats\1/g, '$1' + themeSlug + '$1')
-					.replace(/@package\s+ats\b/g, '@package ' + themeSlug)
-					.replace(/_s_/g, slugWithUnderscores + '_')
-					.replace(/ats_/g, slugWithUnderscores + '_')
-					.replace(/_s-/g, themeSlug + '-')
-					.replace(/ats-/g, themeSlug + '-');
+					.replace(/^Text Domain:\s*.*$/gm, () => 'Text Domain: ' + themeSlug)
+					.replace(/(['"])_s\1/g, (_match, quote) => quote + themeSlug + quote)
+					.replace(/_S_/g, () => slugWithUnderscores.toUpperCase() + '_')
+					.replace(/_s_/g, () => slugWithUnderscores + '_')
+					.replace(/_s-/g, () => themeSlug + '-')
+					.replace(/ _s/g, () => ' ' + themeName);
 
 				if (path === 'style.css' || path === 'style-rtl.css') {
-					contents = contents.replace(/^Theme Name:\s*.*$/m, 'Theme Name: ' + themeName);
+					contents = contents.replace(/^Theme Name:\s*.*$/m, () => 'Theme Name: ' + themeName);
 					if (authorName) {
-						contents = contents.replace(/^Author:\s*.*$/m, 'Author: ' + authorName);
+						contents = contents.replace(/^Author:\s*.*$/m, () => 'Author: ' + authorName);
 					}
 				}
 

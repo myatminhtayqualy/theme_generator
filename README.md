@@ -17,22 +17,25 @@ letter so generated PHP identifiers remain valid.
    **Actions** tab.
 5. Open the Pages URL shown in the deployment or Pages settings.
 
-The source theme is published in `assets/theme-source.zip`. Anyone who can
-visit the public site can download those source files. ZIP generation happens
-in the visitor's browser; theme details are not sent to a PHP server.
+The source theme is published in `assets/theme-source.zip`. It is built from
+`C:\laragon\www\unserscoreme`, excluding the `.git` directory and the local
+generator endpoint. Anyone who can visit the public site can download those
+source files. ZIP generation happens in the visitor's browser; theme details
+are not sent to a PHP server.
 
 ## Updating the source theme
 
-When the ATS theme changes, rebuild the source archive and push the updated
+When the starter theme changes, rebuild the source archive and push the updated
 file:
 
 ```powershell
 .\build-source.ps1
 ```
 
-The script reads `C:\laragon\www\ats\wp-content\themes\ats` by default. A
-different source directory can be supplied with `-ThemePath`. Git metadata and
-directories whose names start with `backup` are left out of the archive.
+The script reads `C:\laragon\www\unserscoreme` by default. A different source
+directory can be supplied with `-ThemePath`. Git metadata and the local PHP
+generator endpoint are left out of the archive; backup directories are also
+excluded.
 
 The page includes JSZip 3.10.1 locally, so generating a ZIP does not require an
 external CDN. The source archive is public because this is a public repository.
