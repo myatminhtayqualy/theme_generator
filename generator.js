@@ -21,7 +21,7 @@
 			throw new Error('ZIP ဖန်တီးရန်လိုအပ်သော library ကို မရရှိနိုင်ပါ။ အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပါ။');
 		}
 
-		const response = await fetch(sourceArchive);
+		const response = await fetch(sourceArchive, { cache: 'no-store' });
 		if (!response.ok) {
 			throw new Error('Theme ဖိုင်များကို ဖတ်မရပါ။ ထပ်မံကြိုးစားပါ။');
 		}
