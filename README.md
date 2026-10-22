@@ -18,10 +18,10 @@ letter so generated PHP identifiers remain valid.
 5. Open the Pages URL shown in the deployment or Pages settings.
 
 The source theme is published in `assets/theme-source.zip`. It is built from
-`C:\laragon\www\unserscoreme`, excluding the `.git` directory and the local
-generator endpoint. Anyone who can visit the public site can download those
-source files. ZIP generation happens in the visitor's browser; theme details
-are not sent to a PHP server.
+`C:\laragon\www\unserscoreme`, excluding `.git`, `.github`, `sass`,
+`woocommerce.css`, and the local generator endpoint. Anyone who can visit the
+public site can download those source files. ZIP generation happens in the
+visitor's browser; theme details are not sent to a PHP server.
 
 ## Updating the source theme
 
@@ -33,9 +33,9 @@ file:
 ```
 
 The script reads `C:\laragon\www\unserscoreme` by default. A different source
-directory can be supplied with `-ThemePath`. Git metadata and the local PHP
-generator endpoint are left out of the archive; backup directories are also
-excluded.
+directory can be supplied with `-ThemePath`. Git metadata, workflow files,
+Sass sources, `woocommerce.css`, the local PHP generator endpoint, and backup
+directories are left out of the archive.
 
 The page includes JSZip 3.10.1 locally, so generating a ZIP does not require an
 external CDN. The source archive is public because this is a public repository.

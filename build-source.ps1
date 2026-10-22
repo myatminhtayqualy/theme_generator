@@ -43,9 +43,9 @@ try {
 
 			foreach ($Segment in $Segments) {
 				if (
-					$Segment -eq '.git' -or
-					$Segment -eq 'theme-generator.php' -or
-					$Segment -match '(?i)^backup(?:\s|$)'
+					$Segment -in @('.git', '.github', 'sass', 'theme-generator.php') -or
+					$Segment -match '(?i)^backup(?:\s|$)' -or
+					$RelativePath -ieq 'woocommerce.css'
 				) {
 					$IsExcluded = $true
 					break
